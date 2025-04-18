@@ -1,8 +1,8 @@
-console.log("ciao")
-
+let humanScore=0;
+let computerScore=0;
 
 function getComputerChoice(){
-    console.log(Math.random());
+    
     let random=Math.random();
     let choice=""
     if(random < 0.33 ){
