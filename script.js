@@ -15,4 +15,5 @@ choice="Rock";
         return choice;
 }
 
-let computerChoice=getComputerChoice();
+let computerChoice = getComputerChoice();
+let userChoice= prompt("Make a choice")
