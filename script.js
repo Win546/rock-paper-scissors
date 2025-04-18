@@ -16,15 +16,23 @@ choice="rock";
 }
 
 let computerChoice = getComputerChoice();
-let userChoiceRaw= prompt("Make a choice")
+let userChoiceRaw= prompt("Make a choice");
 let userChoice=userChoiceRaw.toLowerCase();
-let result="";
-if(userChoice == "paper"){
-    result= computerChoice == "paper" ? "you draw" : computerChoice == "rock" ? "you win" : "you lose" ;
-} else if(userChoice == "rock"){
-    result= computerChoice == "rock" ? "you draw" : computerChoice == "siccsors" ? "you win" : "you lose" ;
-} else{
-    result= computerChoice == "scissors" ? "you draw" : computerChoice == "paper" ? "you win" : "you lose" ;
-}
 
-console.log("the computer played " +computerChoice+ " so " +result);
+
+function getHumanChoice(userChoice){
+    let result="";
+    if(userChoice == "paper"){
+        result= computerChoice == "paper" ? "you draw" : computerChoice == "rock" ? "you win" : "you lose" ;
+    } else if(userChoice == "rock"){
+        result= computerChoice == "rock" ? "you draw" : computerChoice == "scissors" ? "you win" : "you lose" ;
+    } else if(userChoice == "scissors"){
+        result= computerChoice == "scissors" ? "you draw" : computerChoice == "paper" ? "you win" : "you lose" ;
+    } else {
+        result = "you didn't make a valid choice"
+    }
+    return result;
+}
+let humarAnswer=getHumanChoice(userChoice);
+
+console.log("the computer played " +computerChoice+ " and " +humarAnswer);
