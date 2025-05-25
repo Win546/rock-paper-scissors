@@ -1,12 +1,20 @@
-let humanScore = 0;
+function prepareGame(){
+document.getElementById("round-result").innerHTML = ""; 
+    let humanScore = 0;
 let computerScore = 0;
 
 let numberRoundRaw = prompt("How many round");
 let playedRound =0;
 let finished=false;
 let numberRound = parseInt(numberRoundRaw);
-
  document.getElementById("roundNumber").innerText=numberRoundRaw;
+return [humanScore,computerScore,playedRound,finished,numberRound]
+}
+let [humanScore,computerScore,playedRound,finished,numberRound]=prepareGame();
+
+
+
+
 function playGame(humanSelection) {
 
     function playRound(humanSelection, computerSelection) {
@@ -36,7 +44,7 @@ function playGame(humanSelection) {
 
          roundDiv.innerText="the computer played " + computerSelection + " and " + result;
        
-document.body.appendChild(roundDiv)
+document.getElementById("round-result").appendChild(roundDiv)
  
 
     }
@@ -67,13 +75,18 @@ document.getElementById("human").textContent = humanScore;
  document.getElementById("computer").innerText=computerScore;
    playedRound++
        if( playedRound == numberRound)  {
+        let result="";
          if (humanScore > computerScore) {
-    console.log("You won");
+   result="You won";
 } else if (humanScore < computerScore) {
-    console.log("You lost");
+
+     result="You lost";
 } else if (humanScore == computerScore) {
-    console.log("You draw");
+
+     result="You draw";
 }
+document.getElementsByClassName("shadow-back")[0].classList.toggle("show");
+document.getElementById("result").innerText=result;
 finished=true;
 return
     };
@@ -99,6 +112,10 @@ document.addEventListener("click",(e)=>{
          case "scissors":
      
         playGame(choice);
+        break;
+          case "playAgain":
+            document.getElementsByClassName("shadow-back")[0].classList.toggle("show");
+   [humanScore,computerScore,playedRound,finished,numberRound]=prepareGame();
         break;
     }
    

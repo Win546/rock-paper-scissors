@@ -10,7 +10,8 @@
 </head>
 
 <body id="body">
-    <div class="score-board">   
+    <div class="play-area" id="play-area">
+    <div class="score-board">
         <div><span class="info">Human</span><span id="human">0</span></div>
         <div><span class="info">Round</span> <span id="roundNumber">0</span></div>
         <div><span class="info">Computer</span><span id="computer">0</span></div>
@@ -20,7 +21,19 @@
         <button class="button" id="paper">Paper</button>
         <button class="button" id="scissors">Scissors</button>
     </div>
+    <div class="round-result" id="round-result">
 
+    </div>
+   </div>
+<div class="shadow-back">
+    <div class="modal" id="modal">
+        <div>Partita finita</div>
+        <div class="modal-content">
+            <div id="result"></div>
+            <button id="playAgain">Gioca di nuovo</button>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
