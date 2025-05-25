@@ -3,6 +3,8 @@
     font-size: 20px;
     padding: 15px;
     border: 1px solid black;
+    width: 50%;
+    margin:  20px auto;
 }
 
 .button-container{
@@ -30,6 +32,11 @@
     align-items: center;
 }
 
+.score-board > div{
+    display: flex;
+        align-items: center;
+    flex-direction: column;
+}
 span{
     border-radius: 6px;
 }
