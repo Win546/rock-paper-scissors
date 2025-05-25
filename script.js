@@ -2,11 +2,18 @@ let humanScore = 0;
 let computerScore = 0;
 
 let numberRoundRaw = prompt("How many round");
-
+let playedRound =0;
+let finished=false;
 let numberRound = parseInt(numberRoundRaw);
 
-function playGame() {
+ document.getElementById("roundNumber").innerText=numberRoundRaw;
+function playGame(humanSelection) {
+
     function playRound(humanSelection, computerSelection) {
+        if(finished)  {alert("Gioco finito ricarica" ); return;}
+        let roundDiv=document.createElement("div");
+        roundDiv.classList.add("round");
+        roundDiv.innerText="";
         let result = "";
         if (humanSelection == "paper") {
             result = computerSelection == "paper" ? "you draw" : computerSelection == "rock" ? "you win" : "you lose";
@@ -19,8 +26,19 @@ function playGame() {
             return;
         }
       
+        if (result.includes("win")) {
+            humanScore++;
+        } else  if (result.includes("lose")) {
+            computerScore++;
+        }
+    
 
-        return result;
+
+         roundDiv.innerText="the computer played " + computerSelection + " and " + result;
+       
+document.body.appendChild(roundDiv)
+ 
+
     }
 
     function getComputerChoice() {
@@ -41,30 +59,48 @@ function playGame() {
 
 
         let computerSelection = getComputerChoice();
-        let humanSelectionRaw = prompt("Make a choice");
-        let humanSelection = humanSelectionRaw.toLowerCase();
-        let round = playRound(humanSelection, computerSelection);
+    
+     playRound(humanSelection, computerSelection);
 
-        if (round.includes("win")) {
-            humanScore++;
-        } else  if (round.includes("lose")) {
-            computerScore++;
-        }
-        console.log("the computer played " + computerSelection + " and " + round);
-
-   
-}
-
-
-
- for (let i = 1; i <= numberRound; i++) {
-    playGame();
- }
-
- if (humanScore > computerScore) {
+     
+document.getElementById("human").textContent = humanScore;
+ document.getElementById("computer").innerText=computerScore;
+   playedRound++
+       if( playedRound == numberRound)  {
+         if (humanScore > computerScore) {
     console.log("You won");
 } else if (humanScore < computerScore) {
     console.log("You lost");
 } else if (humanScore == computerScore) {
     console.log("You draw");
 }
+finished=true;
+return
+    };
+}
+
+
+
+
+
+
+document.addEventListener("click",(e)=>{
+  
+    let choice=e.target.id;
+    switch(choice){
+        case "rock":
+      
+        playGame(choice);
+           break;
+         case "paper":
+      
+        playGame(choice);
+           break;
+         case "scissors":
+     
+        playGame(choice);
+        break;
+    }
+   
+}
+)
