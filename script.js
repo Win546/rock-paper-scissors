@@ -6,8 +6,10 @@ function prepareGame() {
     let numberRoundRaw = prompt("How many round");
     let playedRound = 0;
     let finished = false;
+
     let numberRound =numberRoundRaw !== null ? parseInt(numberRoundRaw) :1;
-    document.getElementById("roundNumber").innerText = numberRoundRaw;
+        
+    document.getElementById("roundNumber").innerText = numberRound;
     return [humanScore, computerScore, playedRound, finished, numberRound]
 }
 let [humanScore, computerScore, playedRound, finished, numberRound] = prepareGame();
